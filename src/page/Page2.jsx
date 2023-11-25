@@ -1,11 +1,13 @@
 import { Button, Dialog, DialogBody, DialogFooter, DialogHeader } from "@material-tailwind/react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function Page2() {
     const [positions, setPositions] = useState([]);
     const [open, setOpen] = useState(false);
 
-    const handleOpen = () => setOpen(!open);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
 
     const hoverButton = (event) => {
         const newPosition = getRandomPosition();
@@ -109,24 +111,27 @@ export default function Page2() {
                 </DialogFooter>
             </Dialog>
 
-            <Dialog open={open} handler={handleOpen}>
+            <Dialog open={open} handler={handleClose}>
                 <DialogHeader>Đôn nết</DialogHeader>
                 <DialogBody>
                     <div className="flex gap-2 ">
                         <img className="w-1/2" src="https://firebasestorage.googleapis.com/v0/b/swd-longchim.appspot.com/o/images%2FScreenshot%202023-11-25%20072759.png?alt=media&token=860a4dbe-3d29-49c9-9729-e4437f5c4c8f" alt="momo" />
                         <img className="w-1/2" src="https://firebasestorage.googleapis.com/v0/b/swd-longchim.appspot.com/o/images%2FScreenshot%202023-11-25%20072818.png?alt=media&token=a7626a88-c7b3-454d-80d2-e9314d0755f0" alt="bidv" />
 
-                    </div></DialogBody>
+                    </div>
+                    <p className="text-center">Hoặc</p>
+                    <p className="text-center text-light-blue-400"><Link to="https://me.momo.vn/lDI6TWsAijsQt8TNi3IqUx">Bấm vào đây</Link></p>
+                </DialogBody>
                 <DialogFooter>
                     <Button
                         variant="text"
                         color="red"
-                        onClick={handleOpen}
+                        onClick={handleClose}
                         className="mr-1"
                     >
                         <span>xong</span>
                     </Button>
-                    <Button variant="gradient" color="green" onClick={handleOpen}>
+                    <Button variant="gradient" color="green" onClick={handleClose}>
                         <span>đã xong</span>
                     </Button>
                 </DialogFooter>
