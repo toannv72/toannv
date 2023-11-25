@@ -16,7 +16,7 @@ const BirthdayCard = () => {
         <div><span className='text'>Y</span></div>
         <div><span className='text'>!</span></div>
       </div>
-      <h1>nvt</h1>
+      <h1>Sắp đến sinh nhật tui rồi 17/12 cho nên là...</h1>
       <div className='button'><Button onClick={()=>navigate('/page2')}  >Tiếp tục</Button></div>
 
     </div>
