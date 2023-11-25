@@ -1,13 +1,23 @@
 import { Button, Dialog, DialogBody, DialogFooter, DialogHeader } from "@material-tailwind/react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Page2() {
     const [positions, setPositions] = useState([]);
     const [open, setOpen] = useState(false);
+    const navigate = useNavigate();
 
-    const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
+    const handleOpen = () => {
+        setOpen(true);
+
+    }
+    const handleClose = () => {
+        setOpen(false);
+    };
+    const handleSumbit = () => {
+        navigate('/page3')
+    };
+
 
     const hoverButton = (event) => {
         const newPosition = getRandomPosition();
@@ -126,12 +136,12 @@ export default function Page2() {
                     <Button
                         variant="text"
                         color="red"
-                        onClick={handleClose}
+                        onClick={handleSumbit}
                         className="mr-1"
                     >
                         <span>xong</span>
                     </Button>
-                    <Button variant="gradient" color="green" onClick={handleClose}>
+                    <Button variant="gradient" color="green" onClick={handleSumbit}>
                         <span>đã xong</span>
                     </Button>
                 </DialogFooter>
