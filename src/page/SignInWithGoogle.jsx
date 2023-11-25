@@ -24,12 +24,10 @@ const SignInWithGoogle = ({ setLoading,
             .finally(() => {
                 setLoading(!loading);
             });
-        setLoading(!loading);
+        
 
     };
     useEffect(() => {
-        setLoading(!loading);
-
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
           localStorage.setItem("login", JSON.stringify(currentUser));
         });
