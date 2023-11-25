@@ -1,8 +1,18 @@
+import { useEffect, useState } from 'react';
 import BirthdayCard from '../Components/BirthdayCard'
-import ComButton from '../Components/ComButton/ComButton'
+import SignInWithGoogle from './SignInWithGoogle'
+import { useStorage } from '../hooks/useLocalStorage';
 export default function Home() {
+    const [loading, setLoading] = useState(false);
+    const [login, setLogin] = useStorage("login", null)
+    
+    useEffect(() => {
+        setLogin(JSON.parse(localStorage.getItem("login")))
+    }, [loading]);
+
     return (
         <div className="bg-white">
+
             <div className="relative isolate px-6 pt-14 lg:px-8">
                 <div
                     className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
@@ -17,10 +27,11 @@ export default function Home() {
                     />
                 </div>
                 <div className="w-auto h-auto mx-auto max-w-2xl p-5">
-                    <BirthdayCard />
+                    {login?.email ? <BirthdayCard /> : <SignInWithGoogle loading={loading}
+                        setLoading={setLoading} />}
 
                 </div>
-             
+
                 <div
                     className="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
                     aria-hidden="true"
