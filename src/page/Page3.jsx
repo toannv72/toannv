@@ -28,13 +28,11 @@ export default function Page3() {
                         1000,
                          `Cám ơn ${login?.displayName} đã theo dõi`, 
                         1000,
-                        `Cám ơn ${login?.displayName} đã theo dõi \n
-                        Chúc bạn và gia đình có 1 ngày tuyệt vời!
-                        `,
+                        `Cám ơn ${login?.displayName} đã theo dõi\nChúc bạn và gia đình có 1 ngày tuyệt vời!`,
                         1000,
                     ]}
                     speed={50}
-                    style={{ fontSize: '1em' ,textAlign: 'start'}}
+                    style={{ fontSize: '1em' ,textAlign: 'start', whiteSpace: 'pre-line',display: 'block' }}
                 // repeat={Infinity}
                 />
 
