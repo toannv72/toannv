@@ -12,7 +12,6 @@ const SignInWithGoogle = ({ setLoading,
             .then((result) => {
                 // Handle successful authentication
                 const user = result.user;
-                console.log('User signed in:', user);
                 localStorage.setItem("login", JSON.stringify(user));
                 setLoading(!loading);
 
