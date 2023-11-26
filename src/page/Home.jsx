@@ -4,10 +4,10 @@ import SignInWithGoogle from './SignInWithGoogle'
 import { useStorage } from '../hooks/useLocalStorage';
 export default function Home() {
     const [loading, setLoading] = useState(false);
-    const [login, setLogin] = useStorage("login", null)
+    const [login, setLogin] = useStorage("loginG", null)
     
     useEffect(() => {
-        setLogin(JSON.parse(localStorage.getItem("login")))
+        setLogin(JSON.parse(localStorage.getItem("loginG")))
     }, [loading]);
 
     return (

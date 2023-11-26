@@ -1,12 +1,19 @@
 import { Button, Dialog, DialogBody, DialogFooter, DialogHeader } from "@material-tailwind/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useStorage } from "../hooks/useLocalStorage";
 
 export default function Page2() {
     const [positions, setPositions] = useState([]);
     const [open, setOpen] = useState(false);
-    const navigate = useNavigate();
+    const [login, setLogin] = useStorage("loginG", null)
 
+    const navigate = useNavigate();
+    useEffect(() => {
+      if (!login) {
+        navigate('/')
+      }
+    }, []);
     const handleOpen = () => {
         setOpen(true);
 

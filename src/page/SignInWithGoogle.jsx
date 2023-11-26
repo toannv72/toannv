@@ -12,7 +12,7 @@ const SignInWithGoogle = ({ setLoading,
             .then((result) => {
                 // Handle successful authentication
                 const user = result.user;
-                localStorage.setItem("login", JSON.stringify(user));
+                localStorage.setItem("loginG", JSON.stringify(user));
                 setLoading(!loading);
 
             })
@@ -28,7 +28,7 @@ const SignInWithGoogle = ({ setLoading,
     };
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-          localStorage.setItem("login", JSON.stringify(currentUser));
+          localStorage.setItem("loginG", JSON.stringify(currentUser));
         });
         return () => {
           unsubscribe();
