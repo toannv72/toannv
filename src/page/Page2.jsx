@@ -2,6 +2,7 @@ import { Button, Dialog, DialogBody, DialogFooter, DialogHeader } from "@materia
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useStorage } from "../hooks/useLocalStorage";
+import Marquee from "react-fast-marquee";
 
 export default function Page2() {
     const [positions, setPositions] = useState([]);
@@ -10,9 +11,9 @@ export default function Page2() {
 
     const navigate = useNavigate();
     useEffect(() => {
-      if (!login) {
-        navigate('/')
-      }
+        if (!login) {
+            navigate('/')
+        }
     }, []);
     const handleOpen = () => {
         setOpen(true);
@@ -58,8 +59,12 @@ export default function Page2() {
     return (
         <div className="bg-white">
 
+            <Marquee>
+                Cám ơn Lương Huỳnh Ngọc Hảo đã đôn nết 1.000 đô.
+                Cám ơn Võ Thùy Trang đã đôn nết 1.712 đô.
 
-            <div className="relative isolate px-6 pt-14 lg:px-8">
+            </Marquee>
+            <div className="relative isolate px-6 pt-10 lg:px-8">
                 <div
                     className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
                     aria-hidden="true"
