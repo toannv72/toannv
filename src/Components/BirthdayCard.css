@@ -257,7 +257,7 @@ span.text {
         transform: translate(-15px, 10px) rotate(10deg);
     }
 }
-h1 {
+.text-h1 {
     position: relative;
     top: 200px;
     text-align: center;
