@@ -86,9 +86,9 @@ export default function Page2() {
                         <Button onClick={handleOpen} color="blue">Đôn nết</Button>
                         <Button
                             onMouseEnter={hoverButton}
-                            onMouseOver={hoverButton}
-                            // onMouseMove={hoverButton}
-                            onClick={handleOpen}
+                            // onMouseOver={hoverButton}
+                            onMouseMove={hoverButton}
+                            onClick={hoverButton}
                             style={{
                                 transform: `translate(${Math.min(positions[positions.length - 1]?.x || 0, window.innerWidth - 100)}px, ${Math.min(positions[positions.length - 1]?.y || 0, window.innerHeight - 50)}px)`,
                                 transition: 'transform 0.1s ease-in-out',
