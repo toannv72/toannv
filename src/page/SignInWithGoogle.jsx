@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signInWithRedirect } from 'firebase/auth';
+import { signInWithPopup, GoogleAuthProvider, onAuthStateChanged } from 'firebase/auth';
 import GoogleButton from "react-google-button";
 import { auth } from '../configs/firebase';
 import { TypeAnimation } from 'react-type-animation';
@@ -9,7 +9,7 @@ const SignInWithGoogle = ({ setLoading,
 
     const googleSignIn = () => {
         const provider = new GoogleAuthProvider();
-        signInWithRedirect(auth, provider)
+        signInWithPopup(auth, provider)
             .then((result) => {
                 // Handle successful authentication
                 const user = result.user;
