@@ -7,18 +7,18 @@ import Page3 from "./page/Page3";
 export const routers = createBrowserRouter([ 
   { 
     path: "*", 
-    element: <Home/>, 
+    element: <div>404</div>, 
   }, 
   { 
     path: "/", 
-    element: <Home/>, 
+    element:  <div>404</div>, 
   }, 
   { 
     path: "/page2", 
-    element: <Page2/>, 
+    element:  <div>404</div>, 
   },
   { 
     path: "/page3", 
-    element: <Page3/>, 
+    element:  <div>404</div>, 
   },
 ]); 
