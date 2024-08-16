@@ -22,14 +22,14 @@ const Hero = () => (
           variants={textVariant(1.2)}
           className="flex flex-row justify-center items-center"
         >
-          <h1 className={styles.heroHeading}>VĂN</h1>
+          <h1 className={styles.heroHeading}>VĂN TOÀN</h1>
           {/* <div className={styles.heroDText} /> */}
-          <h1 className={styles.heroHeading}>TOÀN</h1>
+          {/* <h1 className={styles.heroHeading}>TOÀN</h1> */}
         </motion.div>
       </div>
 
       <motion.div
-        variants={slideIn('right', 'tween', 0.2, 1)}
+        variants={slideIn("right", "tween", 0.2, 1)}
         className="relative w-full md:-mt-[20px] -mt-[12px]"
       >
         <div className="absolute w-full h-[300px] hero-gradient rounded-tl-[140px] z-[0] -top-[30px]" />

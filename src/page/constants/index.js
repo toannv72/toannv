@@ -54,43 +54,47 @@ export const newFeatures = [
     subtitle: 'Tôi sinh ra và lớn lên tại Hà Nam, một tỉnh yên bình ở miền Bắc Việt Nam.',
   },
 ];
-
 export const insights = [
   {
-    imgUrl: '/planet-06.png',
-    title: 'The launch of the Metaverse makes Elon musk ketar-ketir',
+    title: 'Sinh viên Đại học FPT',
+    imgUrl: 'https://firebasestorage.googleapis.com/v0/b/careconnect-2d494.appspot.com/o/images%2F365c0243-5639-4eb9-931f-f75768426e4e.jpeg?alt=media&token=cf457d7a-576a-4700-b512-48b7296e6378',
     subtitle:
-      'Magna etiam tempor orci eu lobortis elementum nibh tellus molestie. Diam maecenas sed enim ut sem viverra alique.',
+      'Nguyễn Văn Toàn hiện đang theo học tại Đại học FPT, chuyên ngành công nghệ thông tin, với mục tiêu trở thành một lập trình viên giỏi trong tương lai.',
   },
   {
-    imgUrl: '/planet-07.png',
-    title: '7 tips to easily master the madness of the Metaverse',
+    title: 'Đam mê phát triển Web',
+    imgUrl: 'https://firebasestorage.googleapis.com/v0/b/careconnect-2d494.appspot.com/o/images%2F4eca6f42-5554-456a-aee0-90456f6abdc0.png?alt=media&token=54a8c819-acce-49fc-84dc-147ccfd771f5',
     subtitle:
-      'Vitae congue eu consequat ac felis donec. Et magnis dis parturient montes nascetur ridiculus mus. Convallis tellus id interdum',
+      'Với kinh nghiệm trong phát triển Web, Toàn đã tham gia vào nhiều dự án sử dụng React, Node.js và các công nghệ tiên tiến khác.',
   },
   {
-    imgUrl: '/planet-08.png',
-    title: 'With one platform you can explore the whole world virtually',
+    title: 'Quê quán Hà Nam',
+    imgUrl: 'https://firebasestorage.googleapis.com/v0/b/careconnect-2d494.appspot.com/o/images%2F00d89d92-6461-499a-9374-0a4078f8b27f.png?alt=media&token=acbbe31b-f25e-48c9-a280-c87e52015470',
     subtitle:
-      'Quam quisque id diam vel quam elementum. Viverra nam libero justo laoreet sit amet cursus sit. Mauris in aliquam sem',
+      'Sinh ra và lớn lên tại Hà Nam, một vùng đất yên bình, Toàn luôn tự hào về quê hương và những giá trị truyền thống mà nơi đây mang lại.',
   },
 ];
+
 
 export const socials = [
   {
     name: 'twitter',
     url: '/twitter.svg',
+    link:"https://www.facebook.com/toannv1712"
   },
   {
     name: 'linkedin',
     url: '/linkedin.svg',
+    link: "https://www.facebook.com/toannv1712"
   },
   {
     name: 'instagram',
     url: '/instagram.svg',
+    link: "https://www.facebook.com/toannv1712"
   },
   {
     name: 'facebook',
     url: '/facebook.svg',
+    link: "https://www.facebook.com/toannv1712"
   },
 ];

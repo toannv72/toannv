@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
+import { motion } from "framer-motion";
 
-import styles from './../../styles/index';
-import { startingFeatures } from '../constants';
-import { StartSteps, TitleText, TypingText } from '../components';
-import { staggerContainer, fadeIn, planetVariants } from '../utils/motion';
+import styles from "./../../styles/index";
+import { startingFeatures } from "../constants";
+import { StartSteps, TitleText, TypingText } from "../components";
+import { staggerContainer, fadeIn, planetVariants } from "../utils/motion";
 
 const GetStarted = () => (
   <section className={`${styles.paddings} relative z-10`}>
@@ -21,9 +21,9 @@ const GetStarted = () => (
         className={`flex-1 ${styles.flexCenter}`}
       >
         <img
-          src="/get-started.png"
+          src="https://firebasestorage.googleapis.com/v0/b/careconnect-2d494.appspot.com/o/images%2F8c5ee1c2-622d-40e7-837e-771305a643c0.jpg?alt=media&token=a2a4b136-bcbe-4647-8d7e-23e8659b44ca"
           alt="get-started"
-          className="w-[90%] h-[90%] object-contain"
+          className="w-[94%] h-[90%]  rounded-full "
         />
       </motion.div>
       <motion.div
