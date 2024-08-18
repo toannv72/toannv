@@ -105,3 +105,25 @@
   background: #65c4fa;
   filter: blur(150px);
 }
+
+.ant-table-thead .ant-table-cell {
+  background-color: #0f296d !important; /* Thay đổi màu nền header */
+  color: #ffffff !important; /* Thay đổi màu chữ header */
+}
+
+.anticon-filter {
+  background-color: #0f296d !important; /* Thay đổi màu nền header */
+  color: #ffffff  !important;
+}
+.ant-table-column-sorter {
+  color: #ffffff !important;
+}
+
+.ant-affix {
+  z-index: 99;
+}
+
+
+.active .anticon-filter {
+  color: #1677ff !important;
+}
