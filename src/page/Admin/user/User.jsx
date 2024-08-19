@@ -13,9 +13,14 @@ export default function User() {
   useEffect(() => {
     const dataRef = ref(realtimedb, "/");
     onValue(dataRef, (snapshot) => {
-        const data = snapshot.val();
+      const data = snapshot.val();
+      try {
         const arrayData = Object.values(data.data);
-      setData(arrayData);
+
+        setData(arrayData);
+      } catch (error) {
+        setData([]);
+      }
     });
     // const newData = { name: 'New Item', value: 1234 }; // Ví dụ về dữ liệu mới
     // set(ref(realtimedb, '/data'), newData); // Ghi đè tại đường dẫn '/data/item1'

@@ -36,14 +36,14 @@ export default function Index() {
         const minutes = date.getMinutes().toString().padStart(2, '0'); // Lấy phút (MM)
         const seconds = date.getSeconds().toString().padStart(2, '0'); // Lấy giây (SS)
         const formattedDateTime = `${day}/${month}/${year} ${hours}:${minutes}:${seconds}`; // Ghép thành chuỗi dd/mm/yyyy HH:MM:SS
-        if (user) {
-          const newPost = {
-            ip: response.data.ip,
-            createdAt: formattedDateTime,
-            user: user
-          };
-          push(ref(realtimedb, `/data`), newPost);
-        }
+
+        const newPost = {
+          ip: response.data.ip,
+          createdAt: formattedDateTime,
+          user: user || response.data.ip
+        };
+        push(ref(realtimedb, `/data`), newPost);
+
       } catch (error) {
         console.error('Error fetching the IP address:', error);
       }
