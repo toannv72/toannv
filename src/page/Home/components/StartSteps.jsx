@@ -1,4 +1,4 @@
-import styles from './../../styles/index';
+import styles from '../../../styles/index';
 
 const StartSteps = ({ number, text }) => (
   <div className={`${styles.flexCenter} flex-row`}>

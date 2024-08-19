@@ -2,8 +2,8 @@
 
 import { motion } from 'framer-motion';
 
-import styles from './../../styles/index';
-import { fadeIn } from '../utils/motion';
+import styles from '../../../styles/index';
+import { fadeIn } from "../../utils/motion";
 import { Link } from 'react-router-dom';
 
 const ExploreCard = ({

@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 import styles from "./../../styles/index";
 import { startingFeatures } from "../constants";
-import { StartSteps, TitleText, TypingText } from "../components";
+import { StartSteps, TitleText, TypingText } from "./components";
 import { staggerContainer, fadeIn, planetVariants } from "../utils/motion";
 
 const GetStarted = () => (

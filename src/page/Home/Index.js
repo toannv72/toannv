@@ -7,7 +7,7 @@ import WhatsNew from './WhatsNew';
 import World from './World';
 import Insights from './Insights';
 import Feedback from './Feedback';
-import { Footer, Navbar } from '../components';
+import { Footer, Navbar } from './components';
 import { realtimedb } from '../../configs/firebase';
 import { onValue, push, ref, set } from 'firebase/database';
 import { useStorage } from '../../hooks/useLocalStorage';
