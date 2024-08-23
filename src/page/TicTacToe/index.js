@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 
 const TicTacToe = () => {
-    const [board, setBoard] = useState(Array(10).fill(Array(12).fill(null)));
+    const [boardSize, setBoardSize] = useState({ width: 10, height: 10 });
+    const [board, setBoard] = useState(Array(boardSize.height).fill().map(() => Array(boardSize.width).fill(null)));
     const [xIsNext, setXIsNext] = useState(true);
     const [winner, setWinner] = useState(null);
     const [scores, setScores] = useState({ X: 0, O: 0 });
@@ -24,6 +25,10 @@ const TicTacToe = () => {
         }
     }, [winner]);
 
+    useEffect(() => {
+        setBoard(Array(boardSize.height).fill().map(() => Array(boardSize.width).fill(null)));
+    }, [boardSize]);
+
     const handleClick = (row, col) => {
         if (winner || board[row][col]) return;
 
@@ -40,6 +45,7 @@ const TicTacToe = () => {
             setWinner(newWinner);
         }
     };
+
     const calculateWinner = (board, row, col) => {
         const directions = [
             [0, 1], [1, 0], [1, 1], [1, -1]
@@ -53,7 +59,7 @@ const TicTacToe = () => {
                 while (true) {
                     r += dx;
                     c += dy;
-                    if (r < 0 || r >= 10 || c < 0 || c >= 10 || board[r][c] !== board[row][col]) break;
+                    if (r < 0 || r >= boardSize.height || c < 0 || c >= boardSize.width || board[r][c] !== board[row][col]) break;
                     count++;
                 }
                 dx = -dx;
@@ -72,7 +78,7 @@ const TicTacToe = () => {
         const isLastMove = lastMove && lastMove.row === row && lastMove.col === col;
         return (
             <button
-                className={`w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 border border-gray-400 flex items-center justify-center text-sm sm:text-base md:text-xl font-bold rounded-md transition-colors duration-200 ${isLastMove ? 'bg-yellow-200' : 'hover:bg-gray-100'
+                className={`w-3 h-3 min-[310px]:h-4 min-[310px]:w-4 min-[394px]:h-5 min-[394px]:w-5 min-[420px]:h-6 min-[420px]:w-6 min-[500px]:h-7 min-[500px]:w-7 sm:w-8 sm:h-8 md:w-10 md:h-10 border border-gray-400 flex items-center justify-center text-sm sm:text-base md:text-xl font-bold rounded-md transition-colors duration-200 ${isLastMove ? 'bg-yellow-200' : 'hover:bg-gray-100'
                     } relative`}
                 onClick={() => handleClick(row, col)}
             >
@@ -88,7 +94,10 @@ const TicTacToe = () => {
     };
 
     const renderBoard = () => (
-        <div className="grid grid-cols-10 gap-1 bg-white bg-opacity-80 p-2 rounded-lg shadow-lg">
+        <div
+            className="grid gap-1 bg-white bg-opacity-80 p-2 rounded-lg shadow-lg"
+            style={{ gridTemplateColumns: `repeat(${boardSize.width}, minmax(0, 1fr))` }}
+        >
             {board.map((row, i) =>
                 row.map((_, j) => (
                     <div key={`${i}-${j}`}>{renderSquare(i, j)}</div>
@@ -101,6 +110,7 @@ const TicTacToe = () => {
         // const audio = new Audio('path/to/victory-sound.mp3');
         // audio.play();
     };
+
     const goBack = () => {
         if (history.length > 0 && canGoBack) {
             const lastState = history[history.length - 1];
@@ -113,8 +123,9 @@ const TicTacToe = () => {
             setLastMove(lastState.lastMove);
         }
     };
+
     const resetGame = () => {
-        setBoard(Array(10).fill(Array(12).fill(null)));
+        setBoard(Array(boardSize.height).fill().map(() => Array(boardSize.width).fill(null)));
         setXIsNext(Math.random() < 0.5);
         setWinner(null);
         setShowCelebration(false);
@@ -122,6 +133,7 @@ const TicTacToe = () => {
         setCanGoBack(false);
         setLastMove(null);
     };
+
     const startGame = () => {
         if (playerX && playerO) {
             setGameStarted(true);
@@ -152,6 +164,26 @@ const TicTacToe = () => {
                         onChange={(e) => setPlayerO(e.target.value)}
                         className="w-full p-2 mb-4 border border-gray-300 rounded"
                     />
+                    <div className="flex justify-between mb-4">
+                        <input
+                            type="number"
+                            placeholder="Chiều rộng (10-15)"
+                            min="10"
+                            max="15"
+                            value={boardSize.width}
+                            onChange={(e) => setBoardSize({ ...boardSize, width: Math.max(10, Math.min(15, parseInt(e.target.value))) })}
+                            className="w-1/2 p-2 mr-2 border border-gray-300 rounded"
+                        />
+                        <input
+                            type="number"
+                            placeholder="Chiều cao (10-15)"
+                            min="10"
+                            max="15"
+                            value={boardSize.height}
+                            onChange={(e) => setBoardSize({ ...boardSize, height: Math.max(10, Math.min(15, parseInt(e.target.value))) })}
+                            className="w-1/2 p-2 ml-2 border border-gray-300 rounded"
+                        />
+                    </div>
                     <button
                         onClick={startGame}
                         className="w-full py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors duration-200"
@@ -165,7 +197,7 @@ const TicTacToe = () => {
 
     return (
         <div className="flex flex-col items-center justify-center min-h-screen p-4" style={backgroundStyle}>
-            <div className="bg-white bg-opacity-90 p-4 sm:p-6 md:p-8 rounded-lg shadow-md w-full max-w-lg">
+            <div className="bg-white bg-opacity-90 p-4 sm:p-6 md:p-8 rounded-lg shadow-md w-auto ">
                 <h1 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 text-center text-gray-800">Tic Tac Toe</h1>
                 {renderBoard()}
                 <div className="mt-4 text-lg sm:text-xl text-center font-semibold text-gray-700">
