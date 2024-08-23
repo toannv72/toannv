@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 const TicTacToe = () => {
     const [boardSize, setBoardSize] = useState({ width: 10, height: 10 });
@@ -13,7 +13,7 @@ const TicTacToe = () => {
     const [history, setHistory] = useState([]);
     const [canGoBack, setCanGoBack] = useState(false);
     const [lastMove, setLastMove] = useState(null);
-
+    const celebrationRef = useRef(null);
     useEffect(() => {
         if (winner) {
             setShowCelebration(true);
@@ -22,6 +22,11 @@ const TicTacToe = () => {
                 [winner]: prevScores[winner] + 1
             }));
             playVictorySound();
+            setTimeout(() => {
+                if (celebrationRef.current) {
+                    celebrationRef.current.scrollIntoView({ behavior: 'smooth' });
+                }
+            }, 10);
         }
     }, [winner]);
 
@@ -165,24 +170,24 @@ const TicTacToe = () => {
                         className="w-full p-2 mb-4 border border-gray-300 rounded"
                     />
                     <div className="flex justify-between mb-4">
-                        <input
-                            type="number"
-                            placeholder="Chiều rộng (10-15)"
-                            min="10"
-                            max="15"
+                        <select
                             value={boardSize.width}
-                            onChange={(e) => setBoardSize({ ...boardSize, width: Math.max(10, Math.min(15, parseInt(e.target.value))) })}
+                            onChange={(e) => setBoardSize({ ...boardSize, width: parseInt(e.target.value) })}
                             className="w-1/2 p-2 mr-2 border border-gray-300 rounded"
-                        />
-                        <input
-                            type="number"
-                            placeholder="Chiều cao (10-15)"
-                            min="10"
-                            max="15"
+                        >
+                            {[10, 11, 12, 13, 14, 15].map(size => (
+                                <option key={size} value={size}>Chiều rộng: {size}</option>
+                            ))}
+                        </select>
+                        <select
                             value={boardSize.height}
-                            onChange={(e) => setBoardSize({ ...boardSize, height: Math.max(10, Math.min(15, parseInt(e.target.value))) })}
+                            onChange={(e) => setBoardSize({ ...boardSize, height: parseInt(e.target.value) })}
                             className="w-1/2 p-2 ml-2 border border-gray-300 rounded"
-                        />
+                        >
+                            {[10, 11, 12, 13, 14, 15].map(size => (
+                                <option key={size} value={size}>Chiều cao: {size}</option>
+                            ))}
+                        </select>
                     </div>
                     <button
                         onClick={startGame}
@@ -206,6 +211,11 @@ const TicTacToe = () => {
                 <div className="mt-2 text-base sm:text-lg text-center text-gray-600">
                     Tỉ số: {playerX}: {scores.X} - {playerO}: {scores.O}
                 </div>
+                    {showCelebration && (
+                    <div className="mt-4 flex justify-center" ref={celebrationRef} >
+                        <img src="https://ben.com.vn/tin-tuc/wp-content/uploads/2021/12/anh-che-cho-hai-huoc-cho-dien-thoai-4.jpg" alt="Celebration" className="w-32 h-32 sm:w-48 sm:h-48 md:w-64 md:h-64" />
+                        </div>
+                    )}
                 <div className="mt-4 flex justify-between">
                     <button
                         className={`px-4 py-2 ${canGoBack ? 'bg-yellow-500 hover:bg-yellow-600' : 'bg-gray-300 cursor-not-allowed'} text-white rounded transition-colors duration-200`}
@@ -223,11 +233,7 @@ const TicTacToe = () => {
                         </button>
                     )}
                 </div>
-                {showCelebration && (
-                    <div className="mt-4 flex justify-center">
-                        <img src="path/to/celebration-image.gif" alt="Celebration" className="w-32 h-32 sm:w-48 sm:h-48 md:w-64 md:h-64" />
-                    </div>
-                )}
+             
             </div>
         </div>
     );
