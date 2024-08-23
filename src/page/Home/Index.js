@@ -12,12 +12,13 @@ import { realtimedb } from '../../configs/firebase';
 import { onValue, push, ref, set } from 'firebase/database';
 import { useStorage } from '../../hooks/useLocalStorage';
 import axios from 'axios';
+import { useLocation } from 'react-router-dom';
 
 export default function Index() {
   const [data, setData] = useState([]);
   const [user, setUser, loadUser] = useStorage("id", false);
   const [ip, setIp] = useState('');
-
+  const currentUrl = window.location.href;
   useEffect(() => {
     loadUser()
     const fetchIp = async () => {
@@ -40,7 +41,9 @@ export default function Index() {
         const newPost = {
           ip: response.data.ip,
           createdAt: formattedDateTime,
-          user: user || response.data.ip
+          user: user || response.data.ip,
+          first: user ? false  :true ,
+          url: currentUrl
         };
         push(ref(realtimedb, `/data`), newPost);
 

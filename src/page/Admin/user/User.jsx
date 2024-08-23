@@ -17,7 +17,7 @@ export default function User() {
       try {
         const arrayData = Object.values(data.data);
 
-        setData(arrayData);
+        setData(arrayData.reverse());
       } catch (error) {
         setData([]);
       }
@@ -80,10 +80,25 @@ export default function User() {
       ...getColumnSearchProps("ip", ""),
     },
     {
+      title: "first",
+      dataIndex: "first",
+      key: "first",
+
+      sorter: (a, b) => a.first?.localeCompare(b.first),
+      ...getColumnSearchProps("first", ""),
+      render: (e) => <p>{e ?  "lần đầu":"lần 2" }</p>,
+    },
+    {
+      title: "đường dẫn",
+      dataIndex: "url",
+      key: "url",
+      sorter: (a, b) => a.url?.localeCompare(b.url),
+      ...getColumnSearchProps("url", ""),
+    },
+    {
       title: "Thời gian",
       dataIndex: "createdAt",
       key: "createdAt",
-
       sorter: (a, b) => a.createdAt?.localeCompare(b.createdAt),
       ...getColumnSearchProps("createdAt", ""),
     },
