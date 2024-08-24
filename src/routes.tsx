@@ -16,6 +16,10 @@ export const routers = createBrowserRouter([
     element: <Home />,
   },
   {
+    path: "/instagram",
+    element: <Home />,
+  },
+  {
     path: "/TicTacToe",
     element: <TicTacToe />,
   },
