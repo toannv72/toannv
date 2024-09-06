@@ -23,7 +23,7 @@ const About = () => (
         className="mt-[8px] font-normal sm:text-[32px] text-[20px] text-center text-secondary-white"
       >
         Xin chào! Tôi là{" "}
-        <span className="font-extrabold text-white">Nguyễn Văn Toàn</span>, sinh
+        <span className="font-extrabold  text-white">Nguyễn Văn Toàn</span>, sinh
         ngày 17 tháng 12 năm 2000. Với niềm đam mê sâu sắc đối với công nghệ và
         lập trình, tôi đã dành nhiều thời gian để trau dồi kỹ năng và kiến thức
         trong lĩnh vực này. Tôi luôn cố gắng học hỏi và phát triển bản thân mỗi
