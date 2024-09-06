@@ -188,7 +188,12 @@ export default function HaoHao() {
                     repeat={0}
                 />
             </div>
-
+            <div className='flex justify-center  items-center text-center'>
+                <div className='flex justify-center items-center' >
+                    <img className='object-contain h-[50vh] w-auto' alt={'index'} src="https://firebasestorage.googleapis.com/v0/b/careconnect-2d494.appspot.com/o/images%2F2120d77b-3719-4eaa-baad-b3b26d71e271.jpg?alt=media&token=4a8881d3-31f8-4f00-b992-34613b076f06" />
+                </div>
+            </div>
+          
         </div>
     )
 }
