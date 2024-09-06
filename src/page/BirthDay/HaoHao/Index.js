@@ -129,19 +129,25 @@ export default function HaoHao() {
                     Cám ơn Nguyễn Văn Toàn  đã đôn nết 1.000.000.000 đô.
                 </Marquee>
             </div>
-            <div className='flex justify-center  items-center'>
+            <div className="flex justify-center items-center">
                 <TypeAnimation
                     sequence={[
-                        'Chúc mừng sinh nhật Lương Huỳnh Ngọc Hảo Ngày 9-9-2024',
+                        'Chúc mừng sinh nhật anh "Lương Huỳnh Ngọc Hảo"\nNgày 9-9-2024  🎉 🎉 ',
                         2000,
-
                     ]}
                     wrapper="h2"
                     speed={50}
-                    style={{ fontSize: '2em', display: 'inline-block', fontFamily: 'Arial, sans-serif' }}
+                    style={{
+                        fontSize: '2em',
+                        display: 'block',
+                        fontFamily: 'Arial, sans-serif',
+                        whiteSpace: 'pre-line', // Cho phép xuống dòng với \n
+                        textAlign: 'center',
+                    }}
                     repeat={0}
                 />
             </div>
+
             <div className='bg-black h-[50vh] '>
                 <Carousel autoplay arrows={true} infinite={false}>
                     {dataImg.map((value, index) => (
@@ -153,19 +159,19 @@ export default function HaoHao() {
                     ))}
                 </Carousel>
             </div>
-            {/* <div className="mx-auto max-w-xl ">
+            <div className="mx-auto max-w-xl ">
                 <video className="h-full w-full rounded-lg" autoPlay controls controlsList="nodownload">
                 <source src="https://firebasestorage.googleapis.com/v0/b/careconnect-2d494.appspot.com/o/images%2Fbdcea91e-b662-484a-9ec8-c49293c44bfe.mp4?alt=media&token=383131a7-efb2-4df8-937e-05809bf153bc" type="video/mp4" />
                 Your browser does not support the video tag.
             </video>
-            </div> */}
-            <div className="mx-auto   ">
+            </div>
+            {/* <div className="mx-auto   ">
                 <iframe src="https://drive.google.com/file/d/1dHnypf2H3G3M1o5Q6dsL4PkzVQj6WS1y/preview?hd=1"
                     className=" rounded-lg" width="960"
                     height="540" allow="autoplay; fullscreen">
                     
                     </iframe>
-            </div>
+            </div> */}
             <div className="mx-auto max-w-xl ">  <video className="h-full w-full rounded-lg" controls >
                 <source src="https://firebasestorage.googleapis.com/v0/b/swd-longchim.appspot.com/o/images%2Fsena.mp4?alt=media&token=0de947f5-552b-4f4f-ae82-b006701f2603" type="video/mp4" />
                 Your browser does not support the video tag.
