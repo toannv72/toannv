@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Hero from './Hero';
 import About from './About';
 import Explore from './Explore';
@@ -13,12 +13,16 @@ import { onValue, push, ref, set } from 'firebase/database';
 import { useStorage } from '../../hooks/useLocalStorage';
 import axios from 'axios';
 import { useLocation } from 'react-router-dom';
+import { browserName, mobileModel } from "react-device-detect";
 
 export default function Index() {
   const [data, setData] = useState([]);
   const [user, setUser, loadUser] = useStorage("id", false);
   const [ip, setIp] = useState('');
   const currentUrl = window.location.href;
+
+
+
   useEffect(() => {
     loadUser()
     const fetchIp = async () => {
@@ -43,8 +47,16 @@ export default function Index() {
           createdAt: formattedDateTime,
           user: user || response.data.ip,
           first: user ? false  :true ,
-          url: currentUrl
+          url: currentUrl,
+          appName: window.navigator.appName,
+          appVersion: window.navigator.appVersion,
+          platform: window.navigator.platform,
+          userAgent: window.navigator.userAgent,
+          language: window.navigator.language,
+          browserName: browserName,
+          mobileModel: mobileModel||"không phải điện thoại"
         };
+
         push(ref(realtimedb, `/data`), newPost);
 
       } catch (error) {

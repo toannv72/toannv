@@ -3,7 +3,7 @@ import useColumnFilters from "../../../Components/ComTable/utils";
 import { onValue, ref } from "firebase/database";
 import { realtimedb } from "../../../configs/firebase";
 import ComTable from "./../../../Components/ComTable/ComTable";
-import { Table } from "antd";
+import { Table, Tooltip } from "antd";
 
 export default function User() {
   const [data, setData] = useState([]);
@@ -72,6 +72,30 @@ export default function User() {
       ...getColumnSearchProps("user", ""),
     },
     {
+      title: "Thiết bị",
+      dataIndex: "mobileModel",
+      key: "mobileModel",
+      fixed: "left",
+      sorter: (a, b) => a.mobileModel?.localeCompare(b.mobileModel),
+      ...getColumnSearchProps("mobileModel", ""),
+    },
+    {
+      title: "Thiết bị",
+      dataIndex: "platform",
+      key: "platform",
+      fixed: "left",
+      sorter: (a, b) => a.platform?.localeCompare(b.platform),
+      ...getColumnSearchProps("platform", ""),
+    },
+    {
+      title: "Trình duyệt",
+      dataIndex: "browserName",
+      key: "browserName",
+      fixed: "left",
+      sorter: (a, b) => a.browserName?.localeCompare(b.browserName),
+      ...getColumnSearchProps("browserName", ""),
+    },
+    {
       title: "ip",
       dataIndex: "ip",
       key: "ip",
@@ -86,7 +110,7 @@ export default function User() {
 
       sorter: (a, b) => a.first?.localeCompare(b.first),
       ...getColumnSearchProps("first", ""),
-      render: (e) => <p>{e ?  "lần đầu":"lần 2" }</p>,
+      render: (e) => <p>{e ? "lần đầu" : "lần 2"}</p>,
     },
     {
       title: "đường dẫn",
@@ -96,12 +120,35 @@ export default function User() {
       ...getColumnSearchProps("url", ""),
     },
     {
+      title: "Ngôn ngữ",
+      dataIndex: "language",
+      key: "language",
+      sorter: (a, b) => a.language?.localeCompare(b.language),
+      ...getColumnSearchProps("language", ""),
+    },
+    {
+      title: "userAgent",
+      dataIndex: "userAgent",
+      key: "userAgent",
+      sorter: (a, b) => a.userAgent?.localeCompare(b.userAgent),
+      ...getColumnSearchProps("userAgent", ""),
+      ellipsis: {
+        showTitle: false,
+      },
+      render: (record) => (
+        <Tooltip placement="leftBottom" title={record}>
+          {record}
+        </Tooltip>
+      ),
+    },
+    {
       title: "Thời gian",
       dataIndex: "createdAt",
       key: "createdAt",
       sorter: (a, b) => a.createdAt?.localeCompare(b.createdAt),
       ...getColumnSearchProps("createdAt", ""),
     },
+
     // {
     //   title: "Thao tác",
     //   key: "operation",

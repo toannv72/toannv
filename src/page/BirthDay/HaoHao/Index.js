@@ -7,6 +7,7 @@ import { realtimedb } from '../../../configs/firebase';
 
 import axios from 'axios';
 import { useStorage } from '../../../hooks/useLocalStorage';
+import { browserName, mobileModel } from 'react-device-detect';
 
 export default function HaoHao() {
     const [dataImg, setDataImg] = useState([{
@@ -78,12 +79,20 @@ export default function HaoHao() {
                 const seconds = date.getSeconds().toString().padStart(2, '0'); // Lấy giây (SS)
                 const formattedDateTime = `${day}/${month}/${year} ${hours}:${minutes}:${seconds}`; // Ghép thành chuỗi dd/mm/yyyy HH:MM:SS
 
+
                 const newPost = {
                     ip: response.data.ip,
                     createdAt: formattedDateTime,
                     user: user || response.data.ip,
                     first: user ? false : true,
-                    url: currentUrl
+                    url: currentUrl,
+                    appName: window.navigator.appName,
+                    appVersion: window.navigator.appVersion,
+                    platform: window.navigator.platform,
+                    userAgent: window.navigator.userAgent,
+                    language: window.navigator.language,
+                    browserName: browserName,
+                    mobileModel: mobileModel || "không phải điện thoại"
                 };
                 push(ref(realtimedb, `/data`), newPost);
 
@@ -126,7 +135,7 @@ export default function HaoHao() {
         <div className=' flex flex-col gap-6 text-center'>
             <div className='bg-red-600 font-bold'>
                 <Marquee >
-                    Cám ơn Nguyễn Văn Toàn  đã đôn nết 1.000.000.000 đô.
+                    Cám ơn anh Nguyễn Văn Toàn  đã đôn nết 1.000.000.000 đô.
                 </Marquee>
             </div>
             <div className="flex justify-center items-center">
