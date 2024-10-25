@@ -28,6 +28,9 @@ export default function Index() {
     const fetchIp = async () => {
       try {
         const response = await axios.get('https://api.ipify.org?format=json');
+        const address = await axios.get('https://ipapi.co/jsonp');
+        console.log(address.data);
+        
         setIp(response.data.ip);
         if (!user) {
           setUser(response.data.ip)
@@ -43,6 +46,7 @@ export default function Index() {
         const formattedDateTime = `${day}/${month}/${year} ${hours}:${minutes}:${seconds}`; // Ghép thành chuỗi dd/mm/yyyy HH:MM:SS
 
         const newPost = {
+          address: address.data,
           ip: response.data.ip,
           createdAt: formattedDateTime,
           user: user || response.data.ip,
