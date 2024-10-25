@@ -4,6 +4,7 @@ import Home from "./page/Home/Index";
 import User from "./page/Admin/user/User";
 import TicTacToe from "./page/TicTacToe";
 import HaoHao from "./page/BirthDay/HaoHao/Index";
+import Address from "./page/Address/Address";
 
 
 
@@ -15,6 +16,10 @@ export const routers = createBrowserRouter([
   {
     path: "/",
     element: <Home />,
+  },
+  {
+    path: "/address",
+    element: <Address />,
   },
   {
     path: "/instagram",

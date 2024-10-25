@@ -62,6 +62,20 @@ export default function User() {
       />
     );
   };
+  function parseCallbackData(callbackString) {
+    // Xóa "callback(" ở đầu và ");" ở cuối để lấy dữ liệu JSON
+    if (callbackString) {
+      return " ";
+    } else {
+      const jsonString = callbackString
+        ?.replace(/^callback\(/, "")
+        ?.replace(/\);$/, "");
+      // Chuyển chuỗi JSON thành đối tượng
+      console.log(JSON.parse(jsonString));
+      return jsonString;
+    }
+  }
+
   const columns = [
     {
       title: "Name",
@@ -79,6 +93,7 @@ export default function User() {
       sorter: (a, b) => a.mobileModel?.localeCompare(b.mobileModel),
       ...getColumnSearchProps("mobileModel", ""),
     },
+
     {
       title: "Thiết bị",
       dataIndex: "platform",
@@ -94,6 +109,20 @@ export default function User() {
       fixed: "left",
       sorter: (a, b) => a.browserName?.localeCompare(b.browserName),
       ...getColumnSearchProps("browserName", ""),
+    },
+    {
+      title: "Địa chỉ ",
+      dataIndex: "address",
+      key: "address",
+      fixed: "left",
+      // sorter: (a, b) => a.address?.localeCompare(b.address),
+      ...getColumnSearchProps("address", ""),
+      // render: (_, record) => (
+      //   <p>
+      //     {parseCallbackData(record?.address).ip}
+      //     {/* {record?.address?.ip} */}
+      //   </p>
+      // ),
     },
     {
       title: "ip",
